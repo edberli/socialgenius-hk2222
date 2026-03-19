@@ -6,13 +6,30 @@
 
 A Vite + React + TypeScript app for generating XiaoHongShu and Instagram content.
 
+## Deployment modes
+
+### GitHub Pages
+- Static demo only
+- No secure server-side API key storage
+
+### Vercel (recommended)
+- Frontend + serverless API proxy
+- Qwen API key stays on the server
+- End users cannot edit API key in the UI
+
 ## Default AI setup
 
-This project is preconfigured for **Qwen / OpenAI-compatible APIs**.
-
-Default values:
+Server defaults:
 - Base URL: `https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions`
 - Model: `qwen-plus`
+
+## Vercel environment variables
+
+Set these in Vercel Project Settings:
+
+- `QWEN_API_KEY` = your real API key
+- `QWEN_BASE_URL` = `https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions` (optional)
+- `QWEN_MODEL_NAME` = `qwen-plus` (optional)
 
 ## Run locally
 
@@ -20,10 +37,7 @@ Default values:
 
 1. Install dependencies:
    `npm install`
-2. Copy env example:
-   `cp .env.example .env.local`
-3. Put your Qwen-compatible API key into `.env.local`
-4. Start dev server:
+2. Start dev server:
    `npm run dev`
 
 ## Build
@@ -35,4 +49,5 @@ npm run build
 ## Notes
 
 - Do **not** commit your real API key.
-- You can also change Base URL / Model Name directly in the app settings panel.
+- API calls for the Vercel version go through `/api/generate`.
+- Model changes should be done in backend env vars / deployment settings.

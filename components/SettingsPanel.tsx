@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
-import { StoreAddress, AISettings } from '../types';
+import { StoreAddress } from '../types';
 
 interface SettingsPanelProps {
   bio: string;
   setBio: (val: string) => void;
   addresses: StoreAddress[];
   setAddresses: (val: StoreAddress[]) => void;
-  aiSettings: AISettings;
-  setAiSettings: (val: AISettings) => void;
 }
 
-const SettingsPanel: React.FC<SettingsPanelProps> = ({ bio, setBio, addresses, setAddresses, aiSettings, setAiSettings }) => {
+const SettingsPanel: React.FC<SettingsPanelProps> = ({ bio, setBio, addresses, setAddresses }) => {
   const [newAddressName, setNewAddressName] = useState('');
   const [newAddressDetail, setNewAddressDetail] = useState('');
 
@@ -43,46 +41,15 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ bio, setBio, addresses, s
         <span>⚙️</span> 品牌設定 (Brand Setup)
       </h2>
 
-      {/* AI Settings Section */}
       <div className="pt-2 border-b border-slate-100 pb-6 mb-6">
-        <label className="block text-sm font-medium text-slate-700 mb-3">
-          AI 模型設定 (AI Settings)
+        <label className="block text-sm font-medium text-slate-700 mb-2">
+          AI 模型設定
         </label>
-        <div className="space-y-3">
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">Base URL</label>
-            <input 
-              type="text" 
-              value={aiSettings.baseUrl}
-              onChange={(e) => setAiSettings({ ...aiSettings, baseUrl: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-none focus:border-purple-500"
-              placeholder="https://api.openai.com/v1/chat/completions"
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">Model Name</label>
-            <input 
-              type="text" 
-              value={aiSettings.modelName}
-              onChange={(e) => setAiSettings({ ...aiSettings, modelName: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-none focus:border-purple-500"
-              placeholder="gpt-4o"
-            />
-          </div>
-          <div>
-            <label className="block text-xs text-slate-500 mb-1">API Key</label>
-            <input 
-              type="password" 
-              value={aiSettings.apiKey}
-              onChange={(e) => setAiSettings({ ...aiSettings, apiKey: e.target.value })}
-              className="w-full px-3 py-2 border border-slate-300 rounded text-sm focus:outline-none focus:border-purple-500"
-              placeholder="your-qwen-api-key"
-            />
-          </div>
+        <div className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
+          呢個版本已改為由系統後端統一控制 AI model，同 API key 唔會喺前端顯示或俾用家自行修改。
         </div>
       </div>
       
-      {/* Bio Section */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-2">
           品牌/個人簡介 (Bio)
@@ -97,7 +64,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ bio, setBio, addresses, s
         <p className="text-xs text-slate-500 mt-1">此簡介將會被自動整合到生成的貼文中。</p>
       </div>
 
-      {/* Address Section */}
       <div>
         <label className="block text-sm font-medium text-slate-700 mb-3">
           分店地址 (Store Addresses)
@@ -141,7 +107,6 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({ bio, setBio, addresses, s
           )}
         </div>
 
-        {/* Add New Address */}
         <div className="flex flex-col gap-2 pt-3 border-t border-slate-100">
           <input 
             type="text" 

@@ -12,15 +12,11 @@ export interface StoreAddress {
 }
 
 export interface AISettings {
-  apiKey: string;
-  baseUrl: string;
   modelName: string;
 }
 
 export const DEFAULT_AI_SETTINGS: AISettings = {
-  apiKey: (import.meta as any).env?.VITE_AI_API_KEY || '',
-  baseUrl: (import.meta as any).env?.VITE_AI_BASE_URL || 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
-  modelName: (import.meta as any).env?.VITE_AI_MODEL_NAME || 'qwen-plus',
+  modelName: 'qwen-plus',
 };
 
 export interface AppState {

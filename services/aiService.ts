@@ -290,6 +290,6 @@ export const generatePostContent = async (
     return results;
   } catch (error: any) {
     console.error(`Error generating content for ${platform}:`, error);
-    throw new Error(error.message || `無法生成 ${platform === 'xhs' ? '小紅書' : 'Instagram'} 內容。請檢查網絡或稍後再試。`);
+    throw new Error(error.message || `無法生成 ${platform === 'xhs' ? '小紅書' : 'Instagram'} 內容。請檢查服務狀態或稍後再試。`);
   }
 };

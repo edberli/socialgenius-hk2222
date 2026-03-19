@@ -331,8 +331,6 @@ const App: React.FC = () => {
               setBio={setBio}
               addresses={addresses}
               setAddresses={setAddresses}
-              aiSettings={aiSettings}
-              setAiSettings={setAiSettings}
             />
           </div>
 
