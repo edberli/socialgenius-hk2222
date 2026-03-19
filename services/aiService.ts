@@ -220,8 +220,8 @@ const generateSingleVariant = async (
 ): Promise<string> => {
   const textPrompt = generatePromptText(platform, topic, footer, tone, length, variationIndex, !!imageData);
 
-  if (!aiSettings.apiKey || !aiSettings.baseUrl || !aiSettings.modelName) {
-    throw new Error("請先在設定中配置 Qwen / OpenAI-compatible API Key、Base URL 及 Model Name。");
+  if (!aiSettings.modelName) {
+    throw new Error("AI model 未設定。請聯絡管理員更新後端設定。");
   }
 
   const messages: any[] = [
@@ -245,15 +245,14 @@ const generateSingleVariant = async (
     text: textPrompt
   });
 
-  const response = await fetch(aiSettings.baseUrl, {
-    method: "POST",
+  const response = await fetch('/api/generate', {
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${aiSettings.apiKey}`
+      'Content-Type': 'application/json'
     },
     body: JSON.stringify({
       model: aiSettings.modelName,
-      messages: messages,
+      messages,
       temperature: 0.8 + (variationIndex * 0.1),
       top_p: 0.95
     })

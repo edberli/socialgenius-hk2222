@@ -12,15 +12,8 @@ const App: React.FC = () => {
   const [bio, setBio] = useState(DEFAULT_BIO);
   const [addresses, setAddresses] = useState<StoreAddress[]>(DEFAULT_ADDRESSES);
   
-  // AI Settings State
-  const [aiSettings, setAiSettings] = useState<AISettings>(() => {
-    const saved = localStorage.getItem('aiSettings');
-    return saved ? JSON.parse(saved) : DEFAULT_AI_SETTINGS;
-  });
-
-  useEffect(() => {
-    localStorage.setItem('aiSettings', JSON.stringify(aiSettings));
-  }, [aiSettings]);
+  // AI Settings State (server-controlled preset)
+  const [aiSettings] = useState<AISettings>(DEFAULT_AI_SETTINGS);
 
   // Image State
   const [image, setImage] = useState<{ base64: string; mimeType: string; preview: string } | null>(null);
