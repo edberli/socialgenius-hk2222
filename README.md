@@ -20,16 +20,16 @@ A Vite + React + TypeScript app for generating XiaoHongShu and Instagram content
 ## Default AI setup
 
 Server defaults:
-- Base URL: `https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions`
-- Model: `qwen-plus`
+- Base URL: `https://generativelanguage.googleapis.com/v1beta/models`
+- Model: `gemini-3.1-flash-lite-preview`
 
 ## Vercel environment variables
 
 Set these in Vercel Project Settings:
 
 - `QWEN_API_KEY` = your real API key
-- `QWEN_BASE_URL` = `https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions` (optional)
-- `QWEN_MODEL_NAME` = `qwen-plus` (optional)
+- `QWEN_BASE_URL` = `https://generativelanguage.googleapis.com/v1beta/models` (optional)
+- `QWEN_MODEL_NAME` = `gemini-3.1-flash-lite-preview` (optional)
 
 ## Run locally
 

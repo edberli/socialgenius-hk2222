@@ -16,7 +16,7 @@ export interface AISettings {
 }
 
 export const DEFAULT_AI_SETTINGS: AISettings = {
-  modelName: 'qwen-plus',
+  modelName: 'gemini-3.1-flash-lite-preview',
 };
 
 export interface AppState {
